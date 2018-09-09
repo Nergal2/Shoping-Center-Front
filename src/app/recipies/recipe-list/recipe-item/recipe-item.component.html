@@ -1,0 +1,13 @@
+
+<div class="pull-left">
+  <h4 class="list-group-item-heading">{{this.thepaintingrecipe.name}} 
+    ${{this.thepaintingrecipe.price}}
+  </h4>
+  <p class="list-group-item-text">{{this.thepaintingrecipe.description}}</p>
+</div>
+<span class="pull-right">
+  <img [src]="this.thepaintingrecipe.imagepath"
+    alt="{{ this.thepaintingrecipe.name }}"
+    class="img-responsive"
+    style="max-height: 50px;">
+</span>   

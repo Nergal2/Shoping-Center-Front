@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">Магазин</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active">
+        <a [routerLink]="[this.authservice.token ? '/catalogue/edit' : '/catalogue']">Каталог</a>
+      </li>
+      <ng-template [ngIf]="!this.authservice.isAuthenticated()">
+        <li routerLinkActive="active">
+          <a routerLink="/cart">Корзина  {{cartservice.amountinthecart}}</a>
+        </li>
+        <li>
+          <a (click)="cartservice.clearCart()" >(Очистить)</a>
+        </li>
+      </ng-template>
+      <li  *ngIf="this.authservice.isAuthenticated()" 
+        routerLinkActive="active">
+        <a routerLink="/orderslist">Список заказов</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-right navbar-nav"
+      *ngIf="this.authservice.isAuthenticated()">
+      <li class="dropdown" mydropdown>
+        <a class="dropdown-toggle" role="button">Меню <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a (click)="saveCartsData()">Сохранить</a></li>
+          <li><a (click)="getCartsData()">Загрузить</a></li>
+          <li><a routerLink="/" (click)="LogOut()">Выйти</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

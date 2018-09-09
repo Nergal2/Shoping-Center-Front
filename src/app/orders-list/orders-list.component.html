@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="col-xs-12">
+      <a class="list-group-item clearfix"
+        *ngFor="let car of carts; let i=index;">    
+        <div class="row">
+          <div class="col-md-5">
+            <div class="list-group-item"> 
+              <p class="list-group-item-text">Total price is: ${{car.price}} </p>
+              <div class="list-group-item" *ngFor="let recloop of car.cart">
+                <p class="list-group-item-text">{{recloop.rec.name}} X {{recloop.numb}}</p>
+                <h4 class="list-group-item-heading">{{recloop.rec.description}}</h4>
+                <div class="row">
+                  <div class="col-xs-12 col-xs-offset-5">
+                    <img [src]="recloop.rec.imagepath" alt="{{recloop.rec.name}}" class="img-responsive"style="max-height: 80px;">
+                  </div> 
+                </div> 
+              </div>   
+            </div> 
+          </div>
+          <div class="col-md-7">
+            <p class="list-group-item-text">Заказал {{car.name}} </p>
+            <h4 class="list-group-item-text">Который по-жизни {{car.sex}} </h4>
+            <h4 class="list-group-item-text">Почта: {{car.email}} </h4>
+            <h4 class="list-group-item-text">Заказ № : {{car.orderId}} </h4>
+            <div class="row">
+              <button class="btn btn-danger" type="button" (click)="removeCart(i)">Удалить заказ</button>
+            </div>              
+          </div>
+        </div>  
+      </a>     
+    </div>   
+  </div>
+</div>
